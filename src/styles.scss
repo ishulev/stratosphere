@@ -1,3 +1,19 @@
 body {
-    background: blue;
+    background: #efebea;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+main {
+    max-width: 1366px;
+    background: white;
+    h1 {
+        color: #5d5252;
+    }
+    img {
+        max-width: 735px;
+        width: 100%;
+    }
 }
