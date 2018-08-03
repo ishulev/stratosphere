@@ -1,0 +1,24 @@
+{
+  "name": "stratosphere",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishulev/stratosphere.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishulev/stratosphere/issues"
+  },
+  "homepage": "https://github.com/ishulev/stratosphere#readme",
+  "dependencies": {
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0"
+  }
+}
