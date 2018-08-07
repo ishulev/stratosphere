@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
             clearActives(navItems);
             this.parentElement.classList.add(ACTIVE_CLASS);
             window.scrollTo({
-                top: document.documentElement.scrollTop + Math.round(document.getElementById(targetId).getBoundingClientRect().top),
+                top: Math.round(document.documentElement.scrollTop + document.getElementById(targetId).getBoundingClientRect().top),
                 behavior: 'smooth'
             });
         });
