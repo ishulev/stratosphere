@@ -50,6 +50,22 @@ main {
 footer {
     background: #584342;
     color: #efeeea;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    img {
+        max-width: 700px;
+    }
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    [type=submit] {
+        align-self: flex-end;
+        width: 220px;
+    }
 }
 
 .section-overview {
