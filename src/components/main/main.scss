@@ -25,6 +25,24 @@ main {
     }
 }
 
+.lines-around {
+    position: relative;
+    &::before, &::after {
+        content: '';
+        height: 1px;
+        position: absolute;
+        background: #b0a7a7;
+        margin-top: 30px;
+        width: calc(50% - 180px);
+    }
+    &::before {
+        left: 0;
+    }
+    &::after {
+        right: 0;
+    }
+}
+
 .section-overview {
     color: #5d5252;
     img {
