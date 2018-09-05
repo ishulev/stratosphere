@@ -30,6 +30,11 @@ nav {
             padding-top: 40px;
             display: inline-block;
             transition: 0.3s padding;
+            &:active, &:focus {
+                outline: 0;
+                border: none;
+                -moz-outline-style: none;
+            }
         }
     }
     &.thin {
