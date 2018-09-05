@@ -3,14 +3,16 @@ import './styles.scss';
 const ACTIVE_CLASS = 'active';
 
 function clearActives(items) {
-    items.forEach(function(item) {
+    items.forEach(function (item) {
         item.parentNode.classList.remove(ACTIVE_CLASS);
     });
 }
 
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', function (event) {
     const navItems = document.querySelectorAll('nav a');
-    navItems.forEach(function(ele) {
+    const nav = document.querySelector('nav');
+    let thinClassToggled = false;
+    navItems.forEach(function (ele) {
         ele.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
@@ -22,7 +24,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
             });
         });
     });
-    // window.addEventListener('scroll', function(e) {
-    //     console.log(body.height)
-    // })
+    window.addEventListener('scroll', function (e) {
+        if (document.querySelector('body').getBoundingClientRect().top < -85) {
+            if (thinClassToggled) {
+                return;
+            }
+            thinClassToggled = true;
+            nav.classList.add('thin');
+        }
+        else {
+            if (!thinClassToggled) {
+                return;
+            }
+            thinClassToggled = false;
+            nav.classList.remove('thin');
+        }
+    })
 });

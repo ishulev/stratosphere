@@ -3,6 +3,7 @@ nav {
     width: 100%;
     background: rgba(27, 9, 7, 0.3);
     ul {
+        transition: 0.3s height;
         height: 85px;
         max-width: 1366px;
         margin: 0 auto;
@@ -28,6 +29,15 @@ nav {
             font-weight: 300;
             padding-top: 40px;
             display: inline-block;
+            transition: 0.3s padding;
+        }
+    }
+    &.thin {
+        ul {
+            height: initial;
+        }
+        a {
+            padding-top: initial;
         }
     }
 }
