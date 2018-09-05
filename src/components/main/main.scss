@@ -1,0 +1,56 @@
+main {
+    max-width: 1366px;
+    background: white;
+    margin: 0 auto;
+    img {
+        max-width: 735px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    section {
+        margin: 0;
+    }
+    & > * {
+        padding: 100px 200px;
+        padding-top: 85px;
+        overflow: auto;
+        @media screen and (max-width: 1366px) {
+            padding: 30px 50px;
+        }
+    }
+    h1 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
+}
+
+.section-overview {
+    color: #5d5252;
+    img {
+        margin-bottom: 50px;
+    }
+}
+
+.section-sing, .section-drive {
+    p:nth-of-type(3) {
+        clear: left;
+    }
+    img {
+        max-width: 440px;
+        float: left;
+        margin-right: 55px;
+        margin-bottom: 55px;
+        margin-top: 6px;
+    }
+}
+
+.section-sing {
+    color: #5d5252;
+    background: #e3cbbe;
+}
+
+.section-drive {
+    color: #efeeea;
+    background: #8c665f;
+}
