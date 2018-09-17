@@ -1,7 +1,7 @@
 import './styles.scss';
+import images from './lazy-images.module';
 
 const ACTIVE_CLASS = 'active';
-const SECOND_SLIDER_IMG_URL = './assets/images/Pic_2.jpg'
 
 function clearActives(items) {
     items.forEach(function (item) {
@@ -9,15 +9,16 @@ function clearActives(items) {
     });
 }
 
-function downloadImage() {
-    // const img = new Image();
-    // img.addEventListener('load', function () {
-    //     console.log(img);
-    // });
-    // img.src = SECOND_SLIDER_IMG_URL;
-    // import(SECOND_SLIDER_IMG_URL).then(function(){
-    //     console.log('LOADED!');
-    // });
+function downloadImages() {
+    const promiseArray = [];
+    Object.keys(images).forEach(key => {
+        const newImg = new Image();
+        promiseArray.push(new Promise(resolve => {
+            newImg.addEventListener('load', () => resolve());
+        }));
+        newImg.src = images[key];
+    });
+    return Promise.all(promiseArray);
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             });
         });
     });
-    downloadImage();
+    downloadImages().then(() => console.log('download RDY'));
     window.addEventListener('scroll', function (e) {
         if (document.querySelector('body').getBoundingClientRect().top < -85) {
             if (thinClassToggled) {
