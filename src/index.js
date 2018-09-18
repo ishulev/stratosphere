@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let thinClassToggled = false;
     navItems.forEach(function (ele) {
         ele.addEventListener('click', function (e) {
+            if(this.getAttribute('href').substring(0, 1) !== '#') {
+                return;
+            }
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             clearActives(navItems);
