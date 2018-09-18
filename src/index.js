@@ -2,6 +2,11 @@ import './styles.scss';
 import images from './lazy-images.module';
 
 const ACTIVE_CLASS = 'active';
+const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];
+const TRANSITION_CLASS = 'in-transition';
+
+let slideNumber = 1;
+let slider = null;
 
 function clearActives(items) {
     items.forEach(function (item) {
@@ -21,9 +26,38 @@ function downloadImages() {
     return Promise.all(promiseArray);
 }
 
+function cleanSliderClasses() {
+    slider.classList.remove(...SLIDER_CLASSES);
+}
+
+function setNextSlide() {
+    slider.classList.add(SLIDER_CLASSES[slideNumber - 1]);
+}
+
+function startSlider() {
+    slider.addEventListener('transitionend', () => {
+        if(slider.classList.contains(TRANSITION_CLASS)) {
+            cleanSliderClasses();
+            setNextSlide();
+            slider.classList.remove(TRANSITION_CLASS);
+        }
+    });
+    setInterval(() => {
+        slider.classList.add(TRANSITION_CLASS);
+        if(slideNumber === SLIDER_CLASSES.length) {
+            slideNumber = 1;
+        }
+        else {
+            slideNumber++;
+        }
+        // setNextSlide();
+    }, 7000);
+}
+
 document.addEventListener('DOMContentLoaded', function (event) {
     const navItems = document.querySelectorAll('nav a');
     const nav = document.querySelector('nav');
+    slider = document.querySelector('.slider');
     let thinClassToggled = false;
     navItems.forEach(function (ele) {
         ele.addEventListener('click', function (e) {
@@ -37,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             });
         });
     });
-    downloadImages().then(() => console.log('download RDY'));
+    downloadImages().then(startSlider);
     window.addEventListener('scroll', function (e) {
         if (document.querySelector('body').getBoundingClientRect().top < -85) {
             if (thinClassToggled) {

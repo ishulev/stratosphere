@@ -12,9 +12,8 @@
     -o-background-size: cover;
     background-size: cover;
     margin-bottom: -50px;
-    &::after {
+    &::after, &::before {
         content: "";
-        transition: 0.3s opacity;
         top: 0;
         left: 0;
         bottom: 0;
@@ -24,13 +23,22 @@
     }
     &.in-transition {
         &::after {
+            transition: 2s opacity;
             opacity: 0;
         }
     }
     @for $i from 1 through 4 {
+        $next-slide: $i + 1;
+        @if $next-slide == 5 { $next-slide: 1};
         &.slide-#{$i} {
+            &::before {
+                background: url('./assets/images/Pic_#{$next-slide}.jpg') no-repeat center top;
+            }
             &::after {
                 background: url('./assets/images/Pic_#{$i}.jpg') no-repeat center top;
+            }
+            li:nth-child(#{$i}) {
+                @extend .active;
             }
         }
     }
