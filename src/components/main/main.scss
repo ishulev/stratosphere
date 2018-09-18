@@ -9,6 +9,10 @@ main {
     }
     section {
         margin: 0;
+        &.video {
+            padding: 0;
+            display: flex;
+        }
     }
     & > * {
         padding: 100px 200px;
