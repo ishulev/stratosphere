@@ -90,5 +90,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
             thinClassToggled = false;
             nav.classList.remove('thin');
         }
-    })
+    });
+    document.querySelector('.hamburger').addEventListener('click', function() {
+        this.parentNode.classList.toggle('menu--open');
+    });
 });

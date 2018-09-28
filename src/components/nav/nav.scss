@@ -2,18 +2,51 @@ nav {
     position: fixed;
     width: 100%;
     background: rgba(27, 9, 7, 0.5);
+    @media (max-width: 940px) {
+        ul {
+            transform: translateY(-300px);
+            flex-direction: column;
+            display: flex;
+            height: auto!important;
+            li {
+                border-bottom: 0!important;
+                a {
+                    padding-top: 0!important;
+                }
+            }
+        }
+        &.menu--open {
+            ul {
+                transform: translateY(0);
+            }
+            span:first-child {
+                -webkit-transform: rotate(45deg) translate(7px,9px);
+                transform: rotate(45deg) translate(7px,9px);
+            }
+            span:nth-child(2) {
+                opacity: 0;
+            }
+            span:nth-child(3) {
+                -webkit-transform: rotate(135deg) translate(-6px,8px);
+                transform: rotate(135deg) translate(-6px,8px);
+            }
+        }
+        .hamburger {
+            display: flex;
+        }
+    }
+    @media (max-width: $max-width) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
     ul {
-        transition: 0.3s height;
+        transition: 0.3s height, 0.3s transform;
         height: 85px;
         max-width: $max-width;
         margin: 0 auto;
         padding: 0;
         display: flex;
         justify-content: space-between;
-        @media (max-width: $max-width) {
-            padding-left: 50px;
-            padding-right: 50px;
-        } 
         li {
             display: inline;
             &:hover {
@@ -49,4 +82,29 @@ nav {
             padding-top: initial;
         }
     }
+}
+.hamburger {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 25px;
+    width: 35px;
+}
+
+.hamburger__stick {
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,transform .3s;
+    transition: opacity .3s,transform .3s,-webkit-transform .3s;
+    width: 35px;
+    display: block;
+    height: 3px;
+    margin: 0 auto;
+    background: white;
+    will-change: transform,opacity;
 }
