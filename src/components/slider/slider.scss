@@ -37,8 +37,15 @@
             &::after {
                 background: url('./assets/images/Pic_#{$i}.jpg') no-repeat center top;
             }
-            li:nth-child(#{$i}) {
-                @extend .active;
+            &.in-transition {
+                li:nth-child(#{$next-slide}) {
+                    @extend .active;
+                }
+            }
+            &:not(.in-transition) {
+                li:nth-child(#{$i}) {
+                    @extend .active;
+                }
             }
         }
     }
@@ -67,6 +74,11 @@
         padding-left: 0;
     }
     li {
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
         display: inline;
         font-size: 70px;
         color: #7c7277;
