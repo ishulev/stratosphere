@@ -5,12 +5,12 @@ nav {
     ul {
         transition: 0.3s height;
         height: 85px;
-        max-width: 1366px;
+        max-width: $max-width;
         margin: 0 auto;
         padding: 0;
         display: flex;
         justify-content: space-between;
-        @media (max-width: 1366px) {
+        @media (max-width: $max-width) {
             padding-left: 50px;
             padding-right: 50px;
         } 
