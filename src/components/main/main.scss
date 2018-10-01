@@ -1,5 +1,5 @@
 main {
-    max-width: $max-width;
+    max-width: $max-width-main;
     background: white;
     margin: 0 auto;
     img {
@@ -18,7 +18,7 @@ main {
         padding: 100px 200px;
         padding-top: 85px;
         overflow: auto;
-        @media screen and (max-width: $max-width) {
+        @media screen and (max-width: $max-width-main) {
             padding: 30px 50px;
         }
     }
