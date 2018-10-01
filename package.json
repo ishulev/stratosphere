@@ -5,6 +5,7 @@
   "private": "true",
   "scripts": {
     "start": "webpack-dev-server --open",
+    "build:subfolder": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
