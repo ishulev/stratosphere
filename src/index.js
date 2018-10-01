@@ -4,6 +4,7 @@ import images from './lazy-images.module';
 const ACTIVE_CLASS = 'active';
 const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];
 const TRANSITION_CLASS = 'in-transition';
+const MOBILE_MENU_CLASS = 'menu--open';
 
 let slideNumber = 1;
 let slider = null;
@@ -34,9 +35,13 @@ function setNextSlide() {
     slider.classList.add(SLIDER_CLASSES[slideNumber - 1]);
 }
 
+function toggleMobileMenu() {
+    document.querySelector('nav').classList.toggle(MOBILE_MENU_CLASS);
+}
+
 function startSlider() {
     slider.addEventListener('transitionend', () => {
-        if(slider.classList.contains(TRANSITION_CLASS)) {
+        if (slider.classList.contains(TRANSITION_CLASS)) {
             cleanSliderClasses();
             setNextSlide();
             slider.classList.remove(TRANSITION_CLASS);
@@ -44,7 +49,7 @@ function startSlider() {
     });
     setInterval(() => {
         slider.classList.add(TRANSITION_CLASS);
-        if(slideNumber === SLIDER_CLASSES.length) {
+        if (slideNumber === SLIDER_CLASSES.length) {
             slideNumber = 1;
         }
         else {
@@ -61,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let thinClassToggled = false;
     navItems.forEach(function (ele) {
         ele.addEventListener('click', function (e) {
-            if(this.getAttribute('href').substring(0, 1) !== '#') {
+            if (this.getAttribute('href').substring(0, 1) !== '#') {
                 return;
             }
             e.preventDefault();
@@ -72,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 top: Math.round(document.documentElement.scrollTop + document.getElementById(targetId).getBoundingClientRect().top),
                 behavior: 'smooth'
             });
+            if (document.querySelector('nav').classList.contains(MOBILE_MENU_CLASS)) {
+                toggleMobileMenu();
+            }
         });
     });
     downloadImages().then(startSlider);
@@ -91,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             nav.classList.remove('thin');
         }
     });
-    document.querySelector('.hamburger').addEventListener('click', function() {
-        this.parentNode.classList.toggle('menu--open');
+    document.querySelector('.hamburger').addEventListener('click', function () {
+        toggleMobileMenu();
     });
 });
