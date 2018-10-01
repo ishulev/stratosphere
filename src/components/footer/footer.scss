@@ -6,6 +6,9 @@
         align-self: flex-end;
         width: 220px;
         background-color: #8c665f;
+        @media (max-width: 500px) {
+            width: 100%;
+        }
     }
     input, > textarea {
         background-color: #3f2d2c;
@@ -51,6 +54,9 @@
             margin-bottom: 20px;
         }
     }
+    @media (max-width: 540px) {
+        font-size: 20px;
+    }
 }
 
 footer {
@@ -61,10 +67,16 @@ footer {
     justify-content: center; 
     > h1 {
         margin-bottom: 140px;
+        @media (max-width: $max-width-footer) {
+            margin-bottom: 40px;
+        }
     }
     > img {
         max-width: 700px;
         margin-bottom: 110px;
+        @media (max-width: $max-width-footer) {
+            margin-bottom: 40px;
+        }
     }
 }
 

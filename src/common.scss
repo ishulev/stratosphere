@@ -13,6 +13,9 @@ p {
     line-height: 33px;
     text-align: justify;
     font-weight: 300;
+    @media (max-width: 400px) {
+        font-size: 18px;
+    }
 }
 
 .img-holder {
