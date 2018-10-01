@@ -5,6 +5,7 @@ const ACTIVE_CLASS = 'active';
 const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];
 const TRANSITION_CLASS = 'in-transition';
 const MOBILE_MENU_CLASS = 'menu--open';
+const BODY_SCROLL_HIDE_CLASS = 'scroll-y--hidden';
 
 let slideNumber = 1;
 let slider = null;
@@ -36,7 +37,14 @@ function setNextSlide() {
 }
 
 function toggleMobileMenu() {
-    document.querySelector('nav').classList.toggle(MOBILE_MENU_CLASS);
+    const navElement = document.querySelector('nav');
+    navElement.classList.toggle(MOBILE_MENU_CLASS);
+    if (navElement.classList.contains(MOBILE_MENU_CLASS)) {
+        document.body.classList.add(BODY_SCROLL_HIDE_CLASS);
+    }
+    else {
+        document.body.classList.remove(BODY_SCROLL_HIDE_CLASS);
+    }
 }
 
 function startSlider() {

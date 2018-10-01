@@ -1,6 +1,9 @@
 body {
     background: #efebea;
     font-family: "Roboto", sans-serif;
+    &.scroll-y--hidden {
+        overflow-y: hidden;
+    }
 }
 
 h1 {
