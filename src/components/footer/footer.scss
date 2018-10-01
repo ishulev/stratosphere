@@ -29,6 +29,13 @@
             flex-basis: calc(50% - 35px);
             box-sizing: border-box;
         }
+        @media (max-width: $max-width-footer) {
+            display: flex;
+            flex-direction: column;
+            > input:first-child {
+                margin-bottom: 30px;
+            }
+        }
     }
 }
 
@@ -37,6 +44,13 @@
     justify-content: space-between;
     margin-top: 0;
     font-size: 30px;
+    @media (max-width: $max-width-footer) {
+        display: flex;
+        flex-direction: column;
+        span {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 footer {
