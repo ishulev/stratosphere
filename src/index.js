@@ -1,6 +1,7 @@
 import './styles.scss';
 import images from './lazy-images.module';
 import './handle-form.php';
+import './favicon.png';
 
 const ACTIVE_CLASS = 'active';
 const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];

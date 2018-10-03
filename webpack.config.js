@@ -49,13 +49,25 @@ module.exports = {
             ]
         },
         {
-            test: /\.(png|jpg|gif|svg|ttf|TTF)$/,
+            test: /\.(jpg|gif|svg|ttf|TTF)$/,
             use: [
                 {
                     loader: 'file-loader',
                     options: {
                         name: '[name]-[hash].[ext]',
                         outputPath: 'assets/'
+                    }
+                }
+            ]
+        },
+        {
+            test: /\.png$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: '/'
                     }
                 }
             ]
