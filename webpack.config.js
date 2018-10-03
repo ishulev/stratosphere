@@ -59,6 +59,18 @@ module.exports = {
                     }
                 }
             ]
+        },
+        {
+            test: /\.php$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: '/'
+                    }
+                }
+            ]
         }
         ]
     },

@@ -10,13 +10,13 @@
         <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=42.727720, 23.279823&key=AIzaSyCwZ-lpypNbNg1iYFd4ADjeUZS74OFrges"
             allowfullscreen></iframe>
     </div>
-    <form action="" class="contact-form" method="post">
+    <form action="handle-form.php" class="contact-form" method="post">
         <div>
-            <input type="text" name="name" placeholder="Name">
-            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
         </div>
         <input type="text" name="subject" placeholder="Subject">
-        <textarea name="message" id="" cols="30" rows="10" placeholder="Message"></textarea>
-        <input type="submit" value="Send">
+        <textarea required name="message" id="" cols="30" rows="10" placeholder="Message"></textarea>
+        <input type="submit" name="submit" value="Send">
     </form>
 </footer>

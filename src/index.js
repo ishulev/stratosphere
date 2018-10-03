@@ -1,5 +1,6 @@
 import './styles.scss';
 import images from './lazy-images.module';
+import './handle-form.php';
 
 const ACTIVE_CLASS = 'active';
 const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];
@@ -110,4 +111,30 @@ document.addEventListener('DOMContentLoaded', function (event) {
     document.querySelector('.hamburger').addEventListener('click', function () {
         toggleMobileMenu();
     });
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const data = {};
+        Array.from(this.elements).forEach(ele => {
+            data[ele.name] = ele.value;
+        });
+        const postOptions = {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, cors, *same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, same-origin, *omit
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(data), // body data type must match 'Content-Type' header
+        };
+        fetch(e.target.getAttribute('action'), postOptions).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            console.log(data);
+        }).catch(function (err) {
+            console.log('err ==> ', err);
+        });
+    })
+
 });
