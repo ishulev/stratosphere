@@ -7,9 +7,11 @@ const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];
 const TRANSITION_CLASS = 'in-transition';
 const MOBILE_MENU_CLASS = 'menu--open';
 const BODY_SCROLL_HIDE_CLASS = 'scroll-y--hidden';
+const SUBMIT_BUTTON_DISABLED_CLASS = 'submit--disabled';
 
 let slideNumber = 1;
 let slider = null;
+let submitButton = null;
 
 function clearActives(items) {
     items.forEach(function (item) {
@@ -68,10 +70,39 @@ function startSlider() {
     }, 7000);
 }
 
+function sendLoading() {
+    submitButton.setAttribute('value', 'Sending...');
+    submitButton.classList.add(SUBMIT_BUTTON_DISABLED_CLASS);
+}
+
+function resetSend() {
+    submitButton.setAttribute('value', 'Send');
+    submitButton.classList.remove(SUBMIT_BUTTON_DISABLED_CLASS);
+}
+
+function sendSuccessful() {
+    submitButton.setAttribute('value', 'Sent &#10004;');
+    submitButton.classList.remove(SUBMIT_BUTTON_DISABLED_CLASS);
+}
+
+function isProcessingSubmit() {
+    return submitButton.classList.contains(SUBMIT_BUTTON_DISABLED_CLASS);
+}
+
+function clearForm(clonedFormElements) {
+    const form = document.querySelector('.contact-form');
+    Array.from(form.elements).forEach(ele => {
+        if (ele.getAttribute('type') !== 'submit') {
+            ele.value = '';
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function (event) {
     const navItems = document.querySelectorAll('nav a');
     const nav = document.querySelector('nav');
     slider = document.querySelector('.slider');
+    submitButton = document.querySelector('[name="submit"]');
     let thinClassToggled = false;
     navItems.forEach(function (ele) {
         ele.addEventListener('click', function (e) {
@@ -113,6 +144,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
     document.querySelector('.contact-form').addEventListener('submit', function (e) {
         e.preventDefault();
+        if (isProcessingSubmit()) {
+            return;
+        }
         const data = {};
         Array.from(this.elements).forEach(ele => {
             data[ele.name] = ele.value;
@@ -128,13 +162,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
             },
             body: JSON.stringify(data), // body data type must match 'Content-Type' header
         };
+        sendLoading();
         fetch(e.target.getAttribute('action'), postOptions).then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
+            sendSuccessful();
+            clearForm();
         }).catch(function (err) {
             console.log('err ==> ', err);
-        });
+            resetSend();
+            clearForm();
+        }).then(() => setTimeout(() => resetSend(), 3000));
     })
 
 });

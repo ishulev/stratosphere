@@ -9,6 +9,10 @@
         @media (max-width: 500px) {
             width: 100%;
         }
+        &.submit--disabled {
+            background-color: #ae9e9b;
+            cursor: progress;
+        }
     }
     input, > textarea {
         background-color: #3f2d2c;
