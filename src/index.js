@@ -2,6 +2,7 @@ import './styles.scss';
 import images from './lazy-images.module';
 import './handle-form.php';
 import './favicon.png';
+import smoothscroll from 'smoothscroll-polyfill';
 
 const ACTIVE_CLASS = 'active';
 const SLIDER_CLASSES = ['slide-1', 'slide-2', 'slide-3', 'slide-4'];
@@ -13,6 +14,8 @@ const SUBMIT_BUTTON_DISABLED_CLASS = 'submit--disabled';
 let slideNumber = 1;
 let slider = null;
 let submitButton = null;
+
+smoothscroll.polyfill();
 
 function clearActives(items) {
     items.forEach(function (item) {
@@ -110,10 +113,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
             const targetId = this.getAttribute('href').substring(1);
             clearActives(navItems);
             this.parentElement.classList.add(ACTIVE_CLASS);
-            window.scrollTo({
-                top: Math.round(document.documentElement.scrollTop + document.getElementById(targetId).getBoundingClientRect().top),
+            // alert(window.scrollTo);
+            // alert(Math.round(.offsetTop));
+            window.scroll({
+                top: Math.round(document.getElementById(targetId).offsetTop),
+                left: 0,
                 behavior: 'smooth'
             });
+            // document.getElementById(targetId).scrollIntoView({behavior: 'smooth'});
             if (document.querySelector('nav').classList.contains(MOBILE_MENU_CLASS)) {
                 toggleMobileMenu();
             }
