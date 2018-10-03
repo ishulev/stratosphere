@@ -81,7 +81,7 @@ function resetSend() {
 }
 
 function sendSuccessful() {
-    submitButton.setAttribute('value', 'Sent &#10004;');
+    submitButton.setAttribute('value', 'Sent ✔');
     submitButton.classList.remove(SUBMIT_BUTTON_DISABLED_CLASS);
 }
 
@@ -91,11 +91,7 @@ function isProcessingSubmit() {
 
 function clearForm(clonedFormElements) {
     const form = document.querySelector('.contact-form');
-    Array.from(form.elements).forEach(ele => {
-        if (ele.getAttribute('type') !== 'submit') {
-            ele.value = '';
-        }
-    });
+    form.reset();
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
