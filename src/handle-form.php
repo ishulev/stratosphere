@@ -1,6 +1,6 @@
 <?php
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-$to = "ivan.venelinov.shulev@gmail.com";
+$to = "mihailsivanov@gmail.com";
 
 if (strpos($contentType, "application/json") !== false) {
     //Receive the RAW post data.
