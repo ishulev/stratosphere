@@ -12,6 +12,9 @@ main {
         &.video {
             padding: 0;
             display: flex;
+            &.extra-margin-top {
+                margin-top: 20px;
+            }
         }
     }
     & > * {
