@@ -13,6 +13,7 @@ nav {
         justify-content: space-between;
         li {
             display: inline;
+            border-bottom: 5px solid transparent;
             &:hover {
                 border-bottom: 5px solid #f26c4f;
             }
